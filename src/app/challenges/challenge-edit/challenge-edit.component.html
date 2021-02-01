@@ -1,0 +1,24 @@
+<ns-action-bar [title]="isCreating ? 'Replace Challenge' : 'Edit Challenge'"></ns-action-bar>
+
+<FlexboxLayout class="form">
+
+  <StackLayout class="input-field">
+    <Label text="Title" class="label"></Label>
+    <TextField class="input" returnKeyType="next" required [(ngModel)]="titleCtrl"></TextField>
+    <Label *ngIf="!titleCtrl.value && titleCtrl.touched" [text]="titleCtrl"></Label>
+  </StackLayout>
+
+  <StackLayout class="input-field">
+    <Label text="Description" class="label"></Label>
+    <TextView class="input" returnKeyType="done" required></TextView>
+  </StackLayout>
+
+  <Button class="btn" text="save"></Button>
+
+</FlexboxLayout>
+
+
+
+
+<!-- <TextField  hint="Challenge Title" [(ngModel)]="challengeDescription"></TextField>
+  <button  class="btn" (tap)="onSet()" text="Add Challenge"></button> -->

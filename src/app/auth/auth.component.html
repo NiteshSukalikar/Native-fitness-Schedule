@@ -1,0 +1,20 @@
+<ns-action-bar [title]="isLogin ? 'Login' : 'SignUp'" [showBackButton]="false" [hasMenu]="false"></ns-action-bar>
+<StackLayout class="form" [formGroup]="form">
+    <StackLayout class="input-field">
+        <Label text="E-Mail" class="label"></Label>
+        <TextField class="input" returnKeyType="next" keyboardType="email" [autocorrect]="false"
+            autocapitalizationType="none" formControlName="email" #emailEl></TextField>
+        <Label *ngIf="!emailControlIsValid" text="please enter valid email address"></Label>
+    </StackLayout>
+
+    <StackLayout class="input-field">
+        <Label text="Password" class="label"></Label>
+        <TextField class="input" returnKeyType="done" keyboardType="password" [autocorrect]="false"
+            autocapitalizationType="none" [secure]="true" formControlName="password" #passwordEl
+            (returnPress)="onDone()"></TextField>
+        <Label *ngIf="!passwordControlIsValid" text="please enter min 6 words passwords"></Label>
+    </StackLayout>
+
+    <button class="btn btn-flat" [text]="isLogin ? 'SignUp' : 'Login '" (tap)="onSwitch()"></button>
+    <Button [text]="isLogin ? 'Login' : 'SignUp'" [isEnabled]="form.valid" class="btn btn-primary" (tap)="onSubmit()"></Button>
+</StackLayout>

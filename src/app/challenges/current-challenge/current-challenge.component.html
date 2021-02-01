@@ -1,0 +1,71 @@
+<ns-action-bar title="Current Challenge" [showBackButton]="false">
+  <ActionItem
+    ios.position="right"
+    android.position="actionBar"
+    nsRouterLink="/challenges/replace"
+    pageTransition="slideLeft"
+  >
+    <Label
+      text="&#xf0fe;"
+      ios:class="fa p-5"
+      android:class="fa p-10"
+      android:fontSize="24"
+    ></Label
+  ></ActionItem>
+  <ActionItem
+    ios.position="right"
+    android.position="actionBar"
+    nsRouterLink="/challenges/edit"
+    pageTransition="slideLeft"
+  >
+    <Label
+      text="&#xf044;"
+      ios:class="fa p-5"
+      android:class="fa p-10"
+      android:fontSize="24"
+    ></Label
+  ></ActionItem>
+</ns-action-bar>
+
+<ScrollView>
+  <FlexboxLayout class="page">
+    <StackLayout>
+      <Label horizontalAlignment="center" class="h1 text-center" text="Take a Walk Every Day"></Label>
+      <Label horizontalAlignment="center" class="body font-weight-bold text-center"
+        text="Walk for at least 20 min every day"></Label>
+    </StackLayout>
+
+
+    <GridLayout rows="auto,*,*,*,*,*" columns="*,*,*,*,*,*,*">
+      <Label width="100%" class="text-center week-day-label" *ngFor="let weekday of weekDays; let i = index"
+        [text]="weekday" row="0" [col]="i"></Label>
+      <FlexboxLayout class="day completed" *ngFor="let day of currentChallenge.Day; let i = index" [row]="getRow(i, day)"
+        [col]="day.dayInWeek" (tap)="onChangeStatus()">
+        <Label [text]="day.dayInMonth">
+        </Label>
+      </FlexboxLayout>
+    </GridLayout>
+
+  </FlexboxLayout>
+</ScrollView>
+
+
+
+<!-- <Label text="Take a walk every day"></Label>
+<ScrollView>
+  <StackLayout>
+    <Label *ngFor="let Challenge of Challenges" horizontalAlignment="center" class="title" [text]="Challenge"></Label>
+  </StackLayout>
+</ScrollView> -->
+
+<!-- <ListView iosEstimatedRowHeight="65" [items]="Challenges" (itemTap)="onItemTap($event)">
+  <ng-template let-challenge="item" let-i="index">
+    <GridLayout rows="40,20" columns="50,*">
+      <Label text="i" row="0" col="0" rowSpan="2"></Label>
+      <Label [text]="challenge" row="0" col="1"></Label>
+      <Label text="Item Content row 2" row="1" col="1"></Label>
+    </GridLayout>
+  </ng-template>
+</ListView> -->
+
+<!-- <ns-action-bar [title]="'Current challenge'"></ns-action-bar> -->
